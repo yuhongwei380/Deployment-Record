@@ -318,3 +318,52 @@ systemctl restart docker
   ```sh
   docker login yourdomain.com:port
   ```
+
+
+
+------
+
+## harbor 版本升级：
+
+https://goharbor.io/docs/2.4.0/administration/upgrade/
+
+1.登录到 Harbor 主机，如果它仍在运行，请停止现有的 Harbor 实例。
+
+```
+cd harbor
+docker-compose down
+```
+
+2.备份 Harbor 的当前文件，以便在必要时回滚到当前版本。
+
+```
+cp -a  harbor /my_backup_dir/harbor
+```
+
+3.[从https://github.com/goharbor/harbor/releases](https://github.com/goharbor/harbor/releases)获取最新的 Harbor 发布包 并解压。
+
+4.在升级 Harbor 之前，请执行迁移。迁移工具位于以 docker 映像形式提供的港口准备工具中。您可以从 docker hub 拉取图像。在以下命令中：
+
+```
+docker pull goharbor/prepare:[tag]
+```
+
+或者，如果您使用的是脱机安装程序包，则可以从脱机安装程序包中包含的映像 tarball 加载它。在以下命令中将 [tag] 替换为新的 Harbor 版本，例如 v1.10.0：
+
+```
+tar zxf <offline package>
+docker image load -i harbor/harbor.[version].tar.gz
+```
+
+5.复制`/path/to/old/harbor.yml`到`harbor.yml`并升级它。
+
+```
+docker run -it --rm -v /:/hostfs goharbor/prepare:[tag] migrate -i ${path to harbor.yml}
+```
+
+6.在该`./harbor`目录中，运行`./install.sh`脚本以安装新的 Harbor 实例。
+
+```
+harbor/common/config/shared/trust-certificates  会缺CA证书
+```
+
