@@ -11,7 +11,7 @@ yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel r
 ubuntu：
 
 ```
-sudo apt-get install build-essential zlib1g-dev libbz2-1.0 libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb5.3 libpcap-dev xz-utils libexpat1-dev liblzma-dev libssl-dev openssl libffi-dev libc6-dev
+sudo apt-get install build-essential zlib1g-dev libbz2-1.0 libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev tk-dev libgdbm-dev libdb5.3 libpcap-dev xz-utils libexpat1-dev liblzma-dev libssl-dev openssl libffi-dev libc6-dev  libbz2-dev
 ```
 
 2.download
