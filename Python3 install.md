@@ -32,6 +32,7 @@ mkdir /usr/local/python3
 mv Python-3.7.0  /usr/local/python3
 ```
 
+
 5.make&& make install
 
 ```
@@ -47,3 +48,8 @@ ln -s /usr/local/python3/bin/python3.7 /usr/bin/python3
 ln -s /usr/local/python3/bin/pip3.7 /usr/bin/pip3
 ```
 
+如果遇到ModuleNotFoundError: No module named '_bz2'
+
+```
+sudo cp /usr/lib/python3.9/lib-dynload/_bz2.cpython-*-linux-gnu.so  /usr/local/lib/python3.9/
+```
